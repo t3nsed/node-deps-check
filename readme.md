@@ -12,4 +12,4 @@ Parses all `package.json` files of Node.JS projects recursively and lists their
 
 ##### To Do
 
-* counting of licenses
+* ~~counting of licenses~~

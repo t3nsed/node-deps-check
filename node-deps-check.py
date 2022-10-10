@@ -32,7 +32,7 @@ for root, dirs, files in os.walk(traverseDir):
                 data[root] = {"version": version, "license": license, "dependencies": {
                     "dependencies": dependencies, "devDependencies": devDependencies}}
 
-print(licenseSums)
+
 licenseSums = collections.Counter(licenseSums)
 
 with open(outputLicenseSums, 'w') as out:
