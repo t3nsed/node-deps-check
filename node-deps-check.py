@@ -1,10 +1,12 @@
 import collections, os, sys, json
+from operator import contains
 
 output = 'node-deps-verbose.json'
 outputLicenseSums = 'node-deps-licenses.json'
 traverseDir = os.getcwd()
 data = {}
 licenseSums = []
+nonPermissive = ['GPL-3.0']
 
 if len(sys.argv) > 1:
     traverseDir = sys.argv[1]
@@ -23,6 +25,8 @@ for root, dirs, files in os.walk(traverseDir):
                     continue
                 version = packageJson.get('version', "no version specified")
                 license = packageJson.get('license', "no license")
+                if license in nonPermissive:
+                    print("Warning: ", root, " contains the license ", license)
                 licenseSums.append(str(license))
                 dependencies = packageJson.get(
                     'dependencies', "no dependencies")
